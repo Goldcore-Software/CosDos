@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Cosmos.System.FileSystem;
+using libDotNetClr;
+using LibDotNetParser.CILApi;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Sys = Cosmos.System;
@@ -7,18 +10,23 @@ namespace CosDos
 {
     public class Kernel : Sys.Kernel
     {
+        CosmosVFS fs = new Sys.FileSystem.CosmosVFS();
+        DotNetClr clr;
 
         protected override void BeforeRun()
         {
-            Console.WriteLine("Cosmos booted successfully. Type a line of text to get it echoed back.");
+            Console.WriteLine("Starting COS-DOS...");
+            Sys.FileSystem.VFS.VFSManager.RegisterVFS(fs);
+            Console.WriteLine("Emergency console");
         }
 
         protected override void Run()
         {
-            Console.Write("Input: ");
+            Console.Write("emergency> ");
             var input = Console.ReadLine();
-            Console.Write("Text typed: ");
-            Console.WriteLine(input);
+            var fl = new DotNetFile(input);
+            clr = new DotNetClr(fl, @"0:\framework");
+            clr.Start();
         }
     }
 }
