@@ -3,6 +3,7 @@ using libDotNetClr;
 using LibDotNetParser.CILApi;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using Sys = Cosmos.System;
 
@@ -12,12 +13,21 @@ namespace CosDos
     {
         CosmosVFS fs = new Sys.FileSystem.CosmosVFS();
         DotNetClr clr;
+        int emergencymode = 0;
 
         protected override void BeforeRun()
         {
             Console.WriteLine("Starting COS-DOS...");
             Sys.FileSystem.VFS.VFSManager.RegisterVFS(fs);
-            Console.WriteLine("Emergency console");
+            if (!File.Exists(@"0:\COSDOS\command.exe"))
+            {
+                emergencymode = 1;
+                Console.WriteLine("Emergency console");
+            }
+            else
+            {
+                ExecutableManager.StartExecutable(@"0:\COSDOS\command.exe");
+            }
         }
 
         protected override void Run()

@@ -14,7 +14,6 @@ namespace LibDotNetParser.DotNet.Tabels.Defs
         public uint Name { get; private set; }
         public uint Signature { get; private set; }
         public uint ParamList { get; private set; }
-        [MethodImpl(MethodImplOptions.InternalCall)]
         public void Read(MetadataReader reader)
         {
         }
