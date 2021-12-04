@@ -16,6 +16,12 @@ namespace LibDotNetParser.DotNet.Tabels.Defs
         public uint ParamList { get; private set; }
         public void Read(MetadataReader reader)
         {
+            RVA = reader.ReadUInt32();
+            ImplFlags = reader.ReadUInt16();
+            Flags = reader.ReadUInt16();
+            Name = reader.ReadStringStreamIndex();
+            Signature = reader.ReadBlobStreamIndex();
+            ParamList = reader.ReadUInt16();
         }
     }
 }

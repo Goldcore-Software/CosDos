@@ -32,11 +32,20 @@ namespace CosDos
 
         protected override void Run()
         {
-            Console.Write("emergency> ");
-            var input = Console.ReadLine();
-            var fl = new DotNetFile(input);
-            clr = new DotNetClr(fl, @"0:\framework");
-            clr.Start();
+            try
+            {
+                Console.Write("emergency> ");
+                var input = Console.ReadLine();
+                var fl = new DotNetFile(input);
+                clr = new DotNetClr(fl, @"0:\framework");
+                clr.Start();
+            }
+            catch (Exception)
+            {
+
+                
+            }
+            
         }
     }
 }
