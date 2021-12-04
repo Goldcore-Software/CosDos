@@ -14,13 +14,13 @@ namespace CosDos
         CosmosVFS fs = new Sys.FileSystem.CosmosVFS();
         DotNetClr clr;
         public static List<string> Path = new();
-        public static int SystemDriveNumber = -1;
+        public static int SystemDriveNumber = 0;
         int emergencymode = 0;
 
         protected override void BeforeRun()
         {
             Console.WriteLine("Starting COS-DOS...");
-            for (int i = 0; i <= 9; i++)
+            /*for (int i = 0; i <= 9; i++)
             {
                 try
                 {
@@ -38,8 +38,8 @@ namespace CosDos
                 {
 
                 }
-            }
-            Path.Add("COSDOS");
+            }*/
+            Path.Add(SystemDriveNumber + @":\COSDOS");
             Sys.FileSystem.VFS.VFSManager.RegisterVFS(fs);
             if (!File.Exists(@"0:\COSDOS\command.exe"))
             {
