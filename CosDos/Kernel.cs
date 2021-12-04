@@ -41,14 +41,14 @@ namespace CosDos
             }*/
             Path.Add(SystemDriveNumber + @":\COSDOS");
             Sys.FileSystem.VFS.VFSManager.RegisterVFS(fs);
-            if (!File.Exists(@"0:\COSDOS\command.exe"))
+            if (!File.Exists(SystemDriveNumber + @":\COSDOS\command.exe"))
             {
                 emergencymode = 1;
                 Console.WriteLine("Emergency console");
             }
             else
             {
-                ExecutableManager.StartExecutable(@"0:\COSDOS\command.exe");
+                ExecutableManager.StartExecutable(SystemDriveNumber + @":\COSDOS\command.exe");
             }
         }
 
@@ -59,7 +59,7 @@ namespace CosDos
                 Console.Write("emergency> ");
                 var input = Console.ReadLine();
                 var fl = new DotNetFile(input);
-                clr = new DotNetClr(fl, @"0:\framework");
+                clr = new DotNetClr(fl, SystemDriveNumber + @":\COSDOS\framework");
                 clr.Start();
             }
             catch (Exception)

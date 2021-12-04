@@ -5,13 +5,12 @@ namespace command
 {
     class Program
     {
-        public static string CurrentDirectory = @"0:\";
         
         static void Main(string[] args)
         {
             while (true)
             {
-                Console.Write(CurrentDirectory + ">");
+                Console.Write(Shell.GetCurrentDirectory() + ">");
                 Console.ReadLine();
             }
         }

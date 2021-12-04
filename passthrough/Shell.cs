@@ -10,6 +10,10 @@ namespace CosDos
     public class Shell
     {
         [MethodImpl(MethodImplOptions.InternalCall)]
-        public static void Run() { }
+        public static void Run(string cmdline) { }
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        public static string GetCurrentDirectory() { return ""; } // dummy value
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        public static void SetCurrentDirectory(string currdir) { }
     }
 }

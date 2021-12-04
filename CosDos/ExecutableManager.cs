@@ -10,7 +10,7 @@ namespace CosDos
         public static void StartExecutable(string path)
         {
             var fl = new DotNetFile(path);
-            var clr = new DotNetClr(fl, @"0:\COSDOS\dotnet");
+            var clr = new DotNetClr(fl, Kernel.SystemDriveNumber + @":\COSDOS\dotnet");
             clr.Start();
         }
     }
