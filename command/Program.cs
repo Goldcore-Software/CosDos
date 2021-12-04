@@ -11,7 +11,7 @@ namespace command
             while (true)
             {
                 Console.Write(Shell.GetCurrentDirectory() + ">");
-                Console.ReadLine();
+                Shell.Run(Console.ReadLine());
             }
         }
     }
